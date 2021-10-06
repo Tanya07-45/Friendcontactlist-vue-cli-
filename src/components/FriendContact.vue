@@ -1,17 +1,23 @@
 <template>
 <div>
         <li>
-          <h2>{{friend.name}}</h2>
+          <h2>{{name}}</h2>
           <button @click="toogleDetails()">{{ detailsAreVisible ? 'Hide' : 'Show'}} Details</button>
           <ul v-if ="detailsAreVisible">
-            <li><strong>Phone:</strong> {{friend.phone}}</li>
-            <li><strong>Email:</strong>{{friend.email}}</li>
+            <li><strong>Phone:</strong> {{phoneNumber}}</li>
+            <li><strong>Email:</strong>{{email}}</li>
           </ul>
         </li> 
      </div>
 </template>
 <script>
 export default {
+    props:[
+        'name',
+        'phoneNumber',
+        'email' //we could refer this with 'this' keyword.
+    ],
+
   data(){
       return{
         detailsAreVisible: false,
@@ -26,7 +32,8 @@ export default {
   },
   methods:{
        toogleDetails(){
-          this.detailsAreVisible = !this.detailsAreVisible;  
+          this.detailsAreVisible = !this.detailsAreVisible;
+        //   this.phoneNumber  
         }
   }
 };
