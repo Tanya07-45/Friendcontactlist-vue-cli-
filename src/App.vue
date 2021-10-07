@@ -4,17 +4,16 @@
     <ul>
       <!-- if we passed data here we can not change it -->
          <friend-contact
-             name="Manuel Lorenz"
-             phone-number='01234 5678 991'
-             email='manuel@localhost.com'
-             is-favorite='1'
+         v-for="friend in friends"
+         :key="friend.id"
+         :name="friend.name"
+         :phone-number='friend.phone'
+         :email='friend.email'
+         :is-favorite="true"
+           
          ></friend-contact>
-        <friend-contact
-             name='Julie Jones'
-             phone-number='09876 543 221'
-             email=' julie@localhost.com'
-            
-        ></friend-contact>
+           <!-- we cant set here true or false here so we need to bind this with v-bind -->
+      
     </ul>
 </section>
 </template>
