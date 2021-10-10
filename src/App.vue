@@ -13,6 +13,7 @@
          :email='friend.email'
          :is-favorite="friend.isFavourite"
          @toogle-favorite="tooglefavoriteStatus"
+         @delete="deleteContact"
          ></friend-contact>
            <!-- we cant set here true or false here so we need to bind this with v-bind -->
       
@@ -57,6 +58,9 @@ const newFriendContact={
 
 };
      this.friends.push(newFriendContact);
+      },
+      deleteContact(friendId){
+this.friends= this.friends.filter(friend =>friend.id !==friendId);
       }
     },
 

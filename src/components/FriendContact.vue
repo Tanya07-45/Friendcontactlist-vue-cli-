@@ -8,6 +8,7 @@
             <li><strong>Phone:</strong> {{phoneNumber}}</li>
             <li><strong>Email:</strong>{{email}}</li>
           </ul>
+          <button @click="$emit('delete',id)">Delete</button>
         </li> 
      </div>
 </template>
@@ -36,7 +37,7 @@ export default {
 
       },
  },
- emits:['toogle-favorite'],
+ emits:['toogle-favorite','delete'],
  
   data(){
       return{
@@ -54,6 +55,7 @@ export default {
         toogleFavourite(){
          this.$emit('toogle-favorite',this.id);
         },
+    
   },
 };
 </script>
