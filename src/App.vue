@@ -6,11 +6,12 @@
          <friend-contact
          v-for="friend in friends"
          :key="friend.id"
+         :id="friend.id"
          :name="friend.name"
          :phone-number='friend.phone'
          :email='friend.email'
-         :is-favorite="true"
-           
+         :is-favorite="friend.isFavourite"
+         @toogle-favorite="tooglefavoriteStatus"
          ></friend-contact>
            <!-- we cant set here true or false here so we need to bind this with v-bind -->
       
@@ -27,15 +28,24 @@ export default{
                     name:'Manuel Lorenz',
                     phone:'01234 5678 991',
                     email:'manuel@localhost.com',
+                    isFavourite: true
                 },
                 {
                     id: 'julie',
                     name:'Julie Jones',
                     phone:'09876 543 221',
                     email:' julie@localhost.com',
+                    isFavourite: false
                 },
             ],
         };     
+    },
+    methods:{
+      tooglefavoriteStatus(friendId){
+        //alert('this works');
+       const identifiedFriend = this.friends.find(friend => friend.id === friendId);
+       identifiedFriend.isFavourite = !identifiedFriend.isFavourite;//this will automatically pass the updated status back to the component.
+      }
     }
 };
  
